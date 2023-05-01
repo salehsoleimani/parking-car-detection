@@ -27,8 +27,6 @@ ARCHITECTURE Behavioral OF main IS
         PORT (
             active : IN STD_LOGIC;
             clk : IN STD_LOGIC;
-            not_reset : IN STD_LOGIC;
-            car_in : IN STD_LOGIC_VECTOR(9 DOWNTO 0);
             sum_cars : OUT STD_LOGIC_VECTOR(9 DOWNTO 0)
         );
     END COMPONENT;
@@ -44,8 +42,6 @@ ARCHITECTURE Behavioral OF main IS
         PORT (
             active : IN STD_LOGIC;
             clk : IN STD_LOGIC;
-            not_reset : IN STD_LOGIC;
-            car_in : IN STD_LOGIC_VECTOR(9 DOWNTO 0);
             sum_cars : OUT STD_LOGIC_VECTOR(9 DOWNTO 0)
         );
     END COMPONENT;
@@ -98,16 +94,12 @@ BEGIN
     COUNT_DOWN : down_counter PORT MAP(
         active => down_counter_active,
         clk => clk,
-        not_reset => reset,
-        car_in => cars,
         sum_cars => cars_decremented
     );
 
     COUNT_UP : up_counter PORT MAP(
         active => up_counter_active,
         clk => clk,
-        not_reset => reset,
-        car_in => cars,
         sum_cars => cars_incremented
     );
 

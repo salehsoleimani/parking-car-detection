@@ -6,8 +6,6 @@ ENTITY up_counter IS
 	PORT (
 		active : IN STD_LOGIC;
 		clk : IN STD_LOGIC;
-		not_reset : IN STD_LOGIC;
-		car_in : IN STD_LOGIC_VECTOR(9 DOWNTO 0);
 		sum_cars : OUT STD_LOGIC_VECTOR(9 DOWNTO 0)
 	);
 END up_counter;
@@ -35,13 +33,11 @@ BEGIN
 	PROCESS (clk)
 	BEGIN
 		IF (clk'event AND clk = '1' AND active = '1') THEN
-			IF (not_reset = '0') THEN
-				temp2 <= (OTHERS => '0');
-			ELSE
-				temp2 <= temp1;
-			END IF;
+			temp2 <= temp1;
 		END IF;
+
 	END PROCESS;
 
 	sum_cars <= temp2;
+
 END rtl;

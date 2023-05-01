@@ -2,27 +2,27 @@ v 4
 file . "mux21.vhd" "3e61c2e0667009e938cf40d48fbb0854628a7e3a" "20230501075715.954":
   entity mux_2to1 at 1( 0) + 0 on 515;
   architecture behavior of mux_2to1 at 12( 246) + 0 on 516;
-file . "adder.vhd" "c1e0d890405ff59f678ebaf90bd0d06ccbaf1be5" "20230501131038.601":
-  entity adder at 1( 0) + 0 on 657;
-  architecture model of adder at 14( 236) + 0 on 658;
-file . "adder10bit.vhd" "18c1cabef569c874af057027d0607c4eedfc6058" "20230501131038.603":
-  entity adder10bit at 1( 0) + 0 on 659;
-  architecture rtl of adder10bit at 14( 283) + 0 on 660;
-file . "comparator-1.vhd" "4566345dd9622268ccc875c2ae127ccd44561c72" "20230501131038.604":
-  entity comparator at 1( 0) + 0 on 661;
-  architecture behavioral of comparator at 12( 224) + 0 on 662;
-file . "down_counter.vhd" "799958dcdc248657c4cec00662d24562af79ccdc" "20230501131038.605":
-  entity down_counter at 1( 0) + 0 on 663;
-  architecture rtl of down_counter at 15( 289) + 0 on 664;
-file . "main.vhd" "2b3c2321bed4302e5e528f952c82c963e5484ec3" "20230501131038.606":
-  entity main at 1( 0) + 0 on 665;
-  architecture behavioral of main at 10( 147) + 0 on 666;
-file . "up_counter.vhd" "27d18337ca8b5667b045b332807f7589b0499886" "20230501131038.607":
-  entity up_counter at 1( 0) + 0 on 667;
-  architecture rtl of up_counter at 15( 285) + 0 on 668;
-file . "main_tb.vhd" "2c18fe8269fbd2649627c687c9bd8ea87533d49f" "20230501131038.608":
-  entity main_tb at 1( 0) + 0 on 669;
-  architecture behavior of main_tb at 6( 75) + 0 on 670;
+file . "adder.vhd" "c1e0d890405ff59f678ebaf90bd0d06ccbaf1be5" "20230501133857.399":
+  entity adder at 1( 0) + 0 on 825;
+  architecture model of adder at 14( 236) + 0 on 826;
+file . "adder10bit.vhd" "18c1cabef569c874af057027d0607c4eedfc6058" "20230501133857.401":
+  entity adder10bit at 1( 0) + 0 on 827;
+  architecture rtl of adder10bit at 14( 283) + 0 on 828;
+file . "comparator-1.vhd" "4566345dd9622268ccc875c2ae127ccd44561c72" "20230501133857.403":
+  entity comparator at 1( 0) + 0 on 829;
+  architecture behavioral of comparator at 12( 224) + 0 on 830;
+file . "down_counter.vhd" "e0331395c906f3d7a26dd14ac0408477eaa1de4b" "20230501133857.404":
+  entity down_counter at 1( 0) + 0 on 831;
+  architecture rtl of down_counter at 15( 295) + 0 on 832;
+file . "main.vhd" "d60d275a16f0f438497ed37aea4cb2b9162b8472" "20230501133857.405":
+  entity main at 1( 0) + 0 on 833;
+  architecture behavioral of main at 10( 147) + 0 on 834;
+file . "up_counter.vhd" "4979d8abf9e68f49dd032c80bcb570a010f4e088" "20230501133857.406":
+  entity up_counter at 1( 0) + 0 on 835;
+  architecture rtl of up_counter at 15( 291) + 0 on 836;
+file . "main_tb.vhd" "2c18fe8269fbd2649627c687c9bd8ea87533d49f" "20230501133857.406":
+  entity main_tb at 1( 0) + 0 on 837;
+  architecture behavior of main_tb at 6( 75) + 0 on 838;
 file . "downcount.vhd" "46d7680fdc72fe53867d0f030ab48be3d23d4b12" "20230501072953.571":
   entity downcount at 1( 0) + 0 on 339;
   architecture behavioral of downcount at 13( 268) + 0 on 340;
