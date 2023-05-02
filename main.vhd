@@ -23,13 +23,13 @@ ARCHITECTURE Behavioral OF main IS
         );
     END COMPONENT;
 
-    COMPONENT up_counter IS
-        PORT (
-            active : IN STD_LOGIC;
-            clk : IN STD_LOGIC;
-            sum_cars : OUT STD_LOGIC_VECTOR(9 DOWNTO 0)
-        );
-    END COMPONENT;
+    -- COMPONENT up_counter IS
+    --     PORT (
+    --         active : IN STD_LOGIC;
+    --         clk : IN STD_LOGIC;
+    --         sum_cars : OUT STD_LOGIC_VECTOR(9 DOWNTO 0)
+    --     );
+    -- END COMPONENT;
 
     COMPONENT mux_2to1 IS
         PORT (
@@ -38,10 +38,12 @@ ARCHITECTURE Behavioral OF main IS
             output : OUT STD_LOGIC_VECTOR(9 DOWNTO 0));
     END COMPONENT;
 
-    COMPONENT down_counter IS
+    COMPONENT counter IS
         PORT (
             active : IN STD_LOGIC;
+            up : IN STD_LOGIC;
             clk : IN STD_LOGIC;
+            cars : IN STD_LOGIC_VECTOR(9 DOWNTO 0);
             sum_cars : OUT STD_LOGIC_VECTOR(9 DOWNTO 0)
         );
     END COMPONENT;
@@ -50,6 +52,7 @@ ARCHITECTURE Behavioral OF main IS
     SIGNAL current_state, next_state : STATES;
 
     SIGNAL down_counter_active, up_counter_active : STD_LOGIC;
+    SIGNAL counter_active : STD_LOGIC := '0';
 
 BEGIN
     PROCESS (clk, reset)
@@ -65,6 +68,7 @@ BEGIN
     BEGIN
         CASE current_state IS
             WHEN IDLE =>
+                counter_active <= '0';
                 down_counter_active <= '0';
                 up_counter_active <= '0';
                 IF (switch = '1') THEN
@@ -78,11 +82,14 @@ BEGIN
                     next_state <= current_state;
                 END IF;
             WHEN DOWN_COUNT =>
+                counter_active <= '1';
                 down_counter_active <= '1';
                 up_counter_active <= '0';
                 next_state <= IDLE;
             WHEN UP_COUNT =>
-                IF b_greater = '1' THEN
+                IF (b_greater = '1' OR equal = '1') THEN
+                    counter_active <= '1';
+
                     up_counter_active <= '1';
                     down_counter_active <= '0';
                 END IF;
@@ -91,17 +98,19 @@ BEGIN
         END CASE;
     END PROCESS;
 
-    COUNT_DOWN : down_counter PORT MAP(
-        active => down_counter_active,
+    COUNT : counter PORT MAP(
+        active => counter_active,
+        up => up_counter_active,
         clk => clk,
-        sum_cars => cars_decremented
+        cars => cars,
+        sum_cars => cars
     );
 
-    COUNT_UP : up_counter PORT MAP(
-        active => up_counter_active,
-        clk => clk,
-        sum_cars => cars_incremented
-    );
+    -- COUNT_UP : up_counter PORT MAP(
+    --     active => up_counter_active,
+    --     clk => clk,
+    --     sum_cars => cars_incremented
+    -- );
 
     COMPARE : comparator PORT MAP(
         a => cars,
